@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ErisPulse-RichBridge"
+version = "0.1.0"
+description = "ErisPulse rich text bridge module: transparently renders Markdown/Html messages to images via Takumi for adapters without rich text support | ErisPulse 富文本桥接模块：为不支持富文本的适配器将 Markdown/Html 消息渲染为图片发送，适配器与业务代码零改动"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [ { name = "wsu2059q", email = "wsu2059@qq.com" } ]
+
+keywords = [
+    "erispulse",
+    "rich-text",
+    "markdown",
+    "image",
+    "render",
+    "bot",
+    "chatbot",
+    "bot-framework",
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: Chat",
+]
+
+dependencies = [
+    "erispulse-takumi>=1.2.0",
+    "markdown>=3.6",
+    "pygments>=2.17",
+]
+
+[project.urls]
+"homepage" = "https://github.com/ErisPulse/ErisPulse-RichBridge"
+"repository" = "https://github.com/ErisPulse/ErisPulse-RichBridge"
+"issues" = "https://github.com/ErisPulse/ErisPulse-RichBridge/issues"
+
+[project.entry-points]
+"erispulse.module" = { "RichBridge" = "RichBridge:Main" }
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "ErisPulse-Testing",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["RichBridge"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
